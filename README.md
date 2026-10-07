@@ -2,6 +2,8 @@
 
 This directory contains the standalone website for *What to Remember, What to Reveal: Privacy-Aware Memory for Conversational Agents*. It is intentionally separate from the SP-Mem implementation repository.
 
+**Project website:** <https://sp-mem.github.io/>
+
 The site is plain static HTML, CSS, and JavaScript. It has no package-manager dependency and no compile or bundle step.
 
 ## Start the local preview
@@ -42,9 +44,9 @@ Stop the preview with `Ctrl+C` in the PowerShell window that started it.
 - `TO_CONFIRM.md`: author-side items that are intentionally not displayed on the website.
 - `SOURCE_NOTICE.md`: TokenFlow source, attribution, and licensing notes.
 
-## GitHub Pages preparation
+## GitHub Pages
 
-The repository includes a manual-only workflow at `.github/workflows/pages.yml`. Pushing the repository does not deploy the site by itself; deployment occurs only after the workflow is started manually. The workflow publishes only `index.html`, `assets/`, `scripts/`, and `static/`.
+The website is deployed at <https://sp-mem.github.io/> with the manual-only workflow in `.github/workflows/pages.yml`. Pushing the repository does not redeploy the site by itself; updates are published only after the workflow is started manually. The workflow publishes only `index.html`, `assets/`, `scripts/`, and `static/`.
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for repository setup, authentication, Pages settings, and the final manual deployment step.
 
