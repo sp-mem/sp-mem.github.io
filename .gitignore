@@ -1,0 +1,13 @@
+# Local visual-review artifacts and author notes
+preview/
+TO_CONFIRM.md
+
+# Generated publishing directory
+_site/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

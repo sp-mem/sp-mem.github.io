@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="SP-Mem is a privacy-aware memory architecture that separates searchable sanitized memory from protected exact private values."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>What to Remember, What to Reveal: Privacy-Aware Memory for Conversational Agents</title>
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="static/vendor/tokenflow/css/bulma.min.css" />
+    <link rel="stylesheet" href="static/vendor/tokenflow/css/academicons.min.css" />
+    <link rel="stylesheet" href="static/vendor/tokenflow/css/index.css" />
+    <link rel="stylesheet" href="static/css/sp-mem.css?v=20261007-12" />
+    <script defer src="static/vendor/tokenflow/js/fontawesome.all.min.js"></script>
+    <script defer src="scripts/results-data.js?v=20261004-2"></script>
+    <script defer src="scripts/app.js?v=20261007-4"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#overview">Skip to content</a>
+
+    <section class="hero" id="top">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">What to Remember, What to Reveal: Privacy-Aware Memory for Conversational Agents</h1>
+
+              <div class="is-size-5 publication-authors" aria-label="Paper authors">
+                <span class="author-block"><span class="author-name">Wenjie Wang</span><sup>*</sup>,</span>
+                <span class="author-block"><span class="author-name">Wenhe Si</span><sup>*</sup>,</span>
+                <span class="author-block"><span class="author-name">Xinyue Xu</span>,</span>
+                <span class="author-block"><span class="author-name">Yue Xu</span><sup>†</sup></span>
+              </div>
+
+              <div class="is-size-6 publication-authors">
+                <span class="author-block">ShanghaiTech University</span>
+                <span class="eql-cntrb"><small><br /><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</small></span>
+                <span class="author-email"><small><br />{wangwj1, siwh2023, xuxy2022, xuyue2022} [at] shanghaitech.edu.cn</small></span>
+              </div>
+
+              <div class="is-size-3 publication-authors">
+                <span class="author-block">NeurIPS 2026</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links" aria-label="Project resources">
+                  <span class="link-block">
+                    <a data-project-link="paper" href="#" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a data-project-link="code" href="#" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a data-project-link="arxiv" href="#" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <span class="button is-normal is-rounded is-dark resource-placeholder" aria-disabled="true" title="Hugging Face link coming soon">
+                      <span class="icon"><img src="static/vendor/tokenflow/images/hf.png" alt="" /></span>
+                      <span>Hugging Face</span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="subnav" aria-label="Section navigation">
+      <div class="subnav-inner">
+        <a href="#overview">Overview</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#methodology">Method</a>
+        <a href="#results">Results</a>
+        <a href="#BibTeX">BibTeX</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero is-small is-light" id="overview">
+        <div class="hero-body">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+              <div class="column">
+                <h2 class="title is-3">Overview</h2>
+                <div class="content has-text-justified">
+                  <p>SP-Mem preserves useful personalized context while controlling when exact private values may be retrieved and reused.</p>
+                </div>
+                <figure class="project-figure overview-figure">
+                  <button class="figure-zoom" type="button" data-figure-src="assets/images/sp-mem-framework.svg" data-figure-alt="SP-Mem framework with privacy-aware memory writing, partitioned storage, and consent-gated query-time retrieval." aria-label="Enlarge the SP-Mem framework figure">
+                    <img src="assets/images/sp-mem-framework.svg" alt="SP-Mem framework with privacy-aware memory writing, partitioned storage, and consent-gated query-time retrieval." width="1616" height="909" />
+                  </button>
+                  <figcaption><strong>Figure 1:</strong> Overview of the privacy-aware conversational agent framework. The system contains three stages: privacy-aware memory writing, partitioned memory storage, and query-time privacy-aware reasoning. Private values are sanitized before storage and are only hydrated at inference time when the task requires them and the user grants consent.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hero" id="abstract">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Abstract</h2>
+              <div class="content has-text-justified abstract-copy">
+                <p>
+                  Long-term memory enables personalized conversational agents to retain user information across sessions. However, existing memory architectures primarily optimize for utility while neglecting the risks of unnecessarily storing and reusing private attributes such as personally identifiable information (PII). Addressing privacy risks in personalized memory is challenging because simply removing sensitive values can undermine system utility. Therefore, privacy protection for memory agents should govern the full life cycle of sensitive values rather than only sanitizing individual records. To address this gap, we introduce Sanitized Privacy-Mapped Memory (SP-Mem), a privacy-aware memory architecture that decouples memory utility from exact private-value exposure.
+                </p>
+                <p>
+                  SP-Mem provides a full life-cycle privacy design that identifies and separates sensitive information from raw user inputs, stores sanitized content and exact private values in isolated structures, and selectively retrieves private values based on task requirements and user consent. We further introduce a privacy-aware memory benchmark that jointly evaluates response quality, privacy behavior, and inference cost. Extensive experiments across multiple LLM-based agents show that SP-Mem achieves stronger personalization while reducing unnecessary privacy exposure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hero is-light" id="methodology">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-3">Method</h2>
+
+              <div class="columns method-columns has-text-left">
+                <article class="column methodology-point">
+                  <div class="methodology-point-heading">
+                    <span class="method-number">01</span>
+                    <h3 class="title is-5">Extract and Sanitize</h3>
+                  </div>
+                  <p>SP-Mem extracts natural-language facts and relation triples, identifying private values in both branches. Type-specific sanitization replaces these values with aliases, masks, numerical ranges, or generalized descriptions, while retaining non-private preferences.</p>
+                </article>
+                <article class="column methodology-point">
+                  <div class="methodology-point-heading">
+                    <span class="method-number">02</span>
+                    <h3 class="title is-5">Separate and Map</h3>
+                  </div>
+                  <p>Sanitized facts and relations remain searchable in vector and graph stores, while exact private values are stored separately. Mapping keys connect sanitized entries to their original values, enabling selective recovery without exposing them through ordinary retrieval.</p>
+                </article>
+                <article class="column methodology-point">
+                  <div class="methodology-point-heading">
+                    <span class="method-number">03</span>
+                    <h3 class="title is-5">Retrieve with Consent</h3>
+                  </div>
+                  <p>The agent first determines whether the task requires exact private values. It restores only the required values after user consent; otherwise, it answers using sanitized memory.</p>
+                </article>
+              </div>
+
+              <figure class="project-figure method-figure">
+                <button class="figure-zoom" type="button" data-figure-src="assets/images/sp-mem-memory-writing.svg" data-figure-alt="Detailed SP-Mem memory writing with vector and graph extraction, sanitization, mapping layers, and protected private storage." aria-label="Enlarge the detailed SP-Mem writing figure">
+                  <img src="assets/images/sp-mem-memory-writing.svg" alt="Detailed SP-Mem memory writing with vector and graph extraction, sanitization, mapping layers, and protected private storage." width="1616" height="909" />
+                </button>
+                <figcaption><strong>Figure 2:</strong> Detailed view of SP-Mem. The writing module processes each user input through two parallel branches: a vector branch that extracts fact-style memories and a graph branch that extracts relation triples. Non-private values and sanitized private values are written into the sanitized vector and graph stores. For private values, SP-Mem writes mapping keys into the privacy-mapping layer and stores exact values in the protected private storage.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="results">
+        <div class="container results-container">
+          <div class="results-content">
+            <h2 class="title is-3">Results</h2>
+
+            <p class="results-dataset">We evaluate SP-Mem on our synthetic benchmark spanning finance, medical, education, and mental support to assess personalized assistance and appropriate use of private information under different consent conditions.</p>
+
+            <article class="result-block">
+              <h3 class="title is-4">Privacy Behavior</h3>
+              <p class="result-summary">SP-Mem limits unnecessary exposure of exact private values when consent is denied or private information is not needed, helping keep private information from being reused beyond the task’s requirements or the user’s authorization.</p>
+              <figure class="project-figure result-visual">
+                <div class="result-visual-panel">
+                  <button class="figure-zoom" type="button" data-figure-src="assets/images/upu-results.svg" data-figure-alt="Figure 4 comparing Unnecessary Privacy Usage across Full-context, Zep, Mem0, MemOS, and SP-Mem on Mixed-denied, Privacy-only-denied, and Preference-only tasks." aria-label="Enlarge Figure 4 privacy behavior results">
+                    <img src="assets/images/upu-results.svg" alt="Figure 4 comparing Unnecessary Privacy Usage across Full-context, Zep, Mem0, MemOS, and SP-Mem on Mixed-denied, Privacy-only-denied, and Preference-only tasks." width="484" height="68" />
+                  </button>
+                </div>
+                <figcaption>Unnecessary Privacy Usage (UPU, ↓). Lower is better.</figcaption>
+              </figure>
+            </article>
+
+            <article class="result-block">
+              <h3 class="title is-4">Response Quality Without Consent</h3>
+              <p class="result-summary">SP-Mem maintains strong task completion and personalization even when access to exact private values is denied. Sanitized memory preserves useful task and preference information, enabling personalized assistance without restoring the original private values.</p>
+
+              <div class="quality-table-panel">
+                <div class="quality-table-scroll" tabindex="0" role="region" aria-label="Response quality comparison table; scroll horizontally on small screens">
+                  <table class="quality-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">SP-Mem vs.</th>
+                        <th colspan="2" scope="colgroup">GPT-5.2-Chat</th>
+                        <th colspan="2" scope="colgroup">Llama-3.1-8B-<wbr>Instruct</th>
+                        <th colspan="2" scope="colgroup">DeepSeek-V3.2</th>
+                        <th colspan="2" scope="colgroup">Qwen3-14B</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">P-TC ↑</th><th scope="col">P-PQ ↑</th>
+                        <th scope="col">P-TC ↑</th><th scope="col">P-PQ ↑</th>
+                        <th scope="col">P-TC ↑</th><th scope="col">P-PQ ↑</th>
+                        <th scope="col">P-TC ↑</th><th scope="col">P-PQ ↑</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><th scope="row">Full-context</th><td>91.45%</td><td>90.86%</td><td>96.06%</td><td>96.78%</td><td>87.14%</td><td>87.59%</td><td>86.65%</td><td>88.88%</td></tr>
+                      <tr><th scope="row">MemOS</th><td>92.85%</td><td>94.58%</td><td>94.23%</td><td>91.41%</td><td>95.04%</td><td>94.11%</td><td>87.59%</td><td>91.84%</td></tr>
+                      <tr><th scope="row">Mem0</th><td>92.74%</td><td>94.53%</td><td>93.72%</td><td>88.00%</td><td>95.59%</td><td>93.58%</td><td>90.52%</td><td>90.47%</td></tr>
+                      <tr><th scope="row">Zep</th><td>93.39%</td><td>94.30%</td><td>96.17%</td><td>91.54%</td><td>95.69%</td><td>93.58%</td><td>89.05%</td><td>90.62%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <p class="results-note">P-TC: Task Completion; P-PQ: Personalization Quality. Values are SP-Mem’s win-or-tie rates (↑).</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content citation-section">
+          <h2 class="title">BibTeX</h2>
+          <div class="citation-box">
+            <button class="button is-small copy-button" id="copy-citation" type="button">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>
+              <span>Copy</span>
+            </button>
+            <pre><code id="citation-code"></code></pre>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="figure-lightbox" id="figure-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged paper figure" hidden>
+      <div class="figure-lightbox-toolbar">
+        <button class="button lightbox-close" id="lightbox-close" type="button">
+          <span aria-hidden="true">×</span>
+          <span>Close</span>
+        </button>
+      </div>
+      <div class="figure-lightbox-stage" id="figure-lightbox-stage" tabindex="0">
+        <img id="figure-lightbox-image" alt="" />
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p><strong>SP-Mem</strong> · ShanghaiTech University</p>
+              <p>Layout adapted from the <a href="https://diffusion-tokenflow.github.io/" target="_blank" rel="noopener noreferrer">TokenFlow project page</a>, which was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a>. Website layout is shared under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
