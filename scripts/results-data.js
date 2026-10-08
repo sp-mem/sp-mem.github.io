@@ -10,10 +10,7 @@ window.SP_MEM_SITE = {
   author        = {Wang, Wenjie and Si, Wenhe and Xu, Xinyue and Xu, Yue},
   year          = {2026},
   eprint        = {2608.16551},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CR},
-  doi           = {10.48550/arXiv.2608.16551},
-  url           = {https://arxiv.org/abs/2608.16551}
+  archivePrefix = {arXiv}
 }`,
 
   // Paper Figure 4 source values, retained for future editing. The live page uses
