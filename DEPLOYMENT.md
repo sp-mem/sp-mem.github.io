@@ -63,5 +63,4 @@ The workflow is manual, so completing steps 1–3 does not publish until step 4 
 
 - Confirm that `sp-mem/sp-mem.github.io` remains private until publication is approved.
 - Whether the bundled `assets/fonts/google-sans-latin.woff2` may be redistributed publicly; replace it with a confirmed distributable font if needed.
-- The final Hugging Face URL; the current button remains intentionally disabled.
 - Final proceedings metadata and any citation update.
